@@ -5,17 +5,16 @@ import logo from './logo.svg';
 
 function MainNavbar() {
   const items = [
-    { path: '/', title: 'Home' },
-    { path: '/login', title: 'Login' },
-    { path: '/logout', title: 'Logout' },
-    { path: '/signup', title: 'Signup' },
+    { path: '/', title: 'How it\' work' },
+    { path: '/', title: 'Create transaction' },
+    { path: '/', title: 'FAQ' },
   ];
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
-        <a className="navbar-brand d-flex pt-2" href="/">
-          <img src={logo} alt="" className="navbar-logo" />React-Bootstrap
+        <a className="navbar-brand d-flex pt-2 text-white" href="/">
+          <img src={logo} alt="" className="navbar-logo " />LOGO
         </a>
         <button className="navbar-toggler collapsed"
                 type="button"
@@ -27,12 +26,12 @@ function MainNavbar() {
         >
           <span className="navbar-toggler-icon"/>
         </button>
-        <div className="collapse navbar-collapse" id="navbarMenu">
+        <div className="collapse navbar-collapse justify-content-center" id="navbarMenu">
           <ul className="navbar-nav">
             {
               items.map((item, i) => (
-                <li key={i} className="nav-item">
-                  <NavLink className="nav-link" to={item.path}>{item.title}</NavLink>
+                <li key={i} className="nav-item text-white px-4">
+                  <NavLink className="nav-link text-white" to={item.path}>{item.title}</NavLink>
                 </li>
               ))
             }

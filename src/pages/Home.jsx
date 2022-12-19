@@ -1,8 +1,11 @@
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
+import HowitWorks from '../components/HowitWorks';
+import Question from '../components/Question';
+import { colors } from '../values/colors';
 
 function Home() {
-  const title = 'React Bootstrap Template';
+  const title = 'Swap';
 
   const navigate = useNavigate();
 
@@ -13,26 +16,34 @@ function Home() {
       </Helmet>
       <main className="container-fluid">
         <div className="px-4 py-5 my-5 text-center">
-          <h1 className="display-5 fw-bold">{title}</h1>
-          <div className="col-lg-6 mx-auto">
-            <p className="lead mb-4">
-              A simple, clean starter web app project with React and Bootstrap 5.
+          <h1 className="display-5 fw-bold text-white">SWAP ANY <span style={{ color: colors.primary }}>CRYPTO </span>INSTANTLY</h1>
+          <div className="col-lg-6 mx-auto mb-4">
+            <p className="lead mb-4 text-white">
+              Fast Crypto Swaps, Free of Custody
             </p>
             <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
               <button type="button"
-                      className="btn btn-outline-secondary btn-lg px-4"
-                      onClick={() => navigate('/signup')}
+                className="btn btn-success btn-lg px-4 text-black"
+                style={{ background: colors.primary }}
+                onClick={() => navigate('/signup')}
               >
-                Sign up
+                Create Transaction
               </button>
               <button type="button"
-                      className="btn btn-primary btn-lg px-4 gap-3"
-                      onClick={() => navigate('/login')}
+                className="btn btn-success btn-lg px-5 gap-3"
+                style={{ background: '#204D46' }}
+                onClick={() => navigate('/login')}
               >
-                Log in
+                Check Pricing
               </button>
             </div>
           </div>
+        </div>
+        <div className="px-4 py-5">
+          <HowitWorks />
+        </div>
+        <div className="px-4 py-5">
+          <Question />
         </div>
       </main>
     </>

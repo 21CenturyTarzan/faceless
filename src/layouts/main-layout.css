@@ -1,0 +1,7 @@
+.top-container {
+    /* background: radial-gradient(circle at 48% 0%, #0d4c4e 0%, #0A1C20 50%, #0A1C20 100%, 50%,transparent),
+    radial-gradient(closest-corner circle at 80% 20%, #FFFFFF 0%, rgb(171,171,171),20%,transparent); */
+    background-image: 
+    radial-gradient(closest-corner circle at 48% 0%, #0d4c4e 0%, #0A1C20 80%,transparent),
+    radial-gradient(closest-corner circle at 50% 70%, #0a383a 0%,#0A1C20 70%);
+}

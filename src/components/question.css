@@ -1,0 +1,12 @@
+.accordion-header {
+    background-color: #1B3A3F;
+}
+.accordion {
+    --bs-accordion-bg: #1B3A3F;
+    --bs-accordion-border-color: green;
+    --bs-accordion-active-color: rgb(123, 247, 206);
+    --bs-accordion-active-bg: rgb(32, 77, 70);
+}
+.accordion * {
+    color:white;
+}
