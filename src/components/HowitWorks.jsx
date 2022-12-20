@@ -35,7 +35,7 @@ function HowitWorks() {
       <h2 className="text-white">HOW IT WORKS</h2>
       <Row xs={1} md={3} className="g-4">
         {questionArray.map((item, idx) => (
-          <Col>
+          <Col key={idx}>
             <Card style={{ background: '#1B3A3F' }}>
               <Card.Body>
                 <Card.Title style={{ color: colors.primary }}>Step {idx + 1}</Card.Title>

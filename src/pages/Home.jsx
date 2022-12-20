@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import HowitWorks from '../components/HowitWorks';
 import Question from '../components/Question';
+import SwapForm from '../components/SwapForm';
 import { colors } from '../values/colors';
 
 function Home() {
@@ -38,6 +39,9 @@ function Home() {
               </button>
             </div>
           </div>
+        </div>
+        <div className="px-4 py-5">
+          <SwapForm />
         </div>
         <div className="px-4 py-5">
           <HowitWorks />
