@@ -5,7 +5,7 @@ import MainNavbar from '../components/MainNavbar';
 
 function MainLayout() {
   return (
-    <div className="top-container">
+    <div className="top-container h-100">
       <div className='container'>
         <MainNavbar />
         <Outlet />

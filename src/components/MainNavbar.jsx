@@ -28,11 +28,11 @@ function MainNavbar() {
           </ul>
         </div>
         <button type="button"
-          className="btn btn-success btn-lg px-4 text-black"
+          className="btn btn-success px-4 text-black"
           style={{ background: colors.primary }}
           onClick={() => navigate('/login')}
         >
-          Sign In
+          Sign In <i class="bi bi-box-arrow-in-right"></i>
         </button>
         <button className="navbar-toggler collapsed"
           type="button"
