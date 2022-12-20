@@ -20,7 +20,6 @@ const coinLists = [
 function HowitWorks() {
   const [selectedChain, selectedChainHandler] = useState(1);
   const [selectedCoin, selectedCoinHandler] = useState(1);
-  console.log(selectedChain);
   return (
     <>
       <Card style={{ background: '#1A2D33' }}>
@@ -36,10 +35,10 @@ function HowitWorks() {
                     <Form.Group className="mb-3" controlId="chooseNetwork">
                       <Form.Label>Choose Network</Form.Label>
                       <Dropdown>
-                        <Dropdown.Toggle variant="success" className="w-100" id="chooseNetwork" style={{ background: '#09181D', textAlign: 'left' }}>
+                        <Dropdown.Toggle variant="success" className="w-100 overflow-hidden" id="chooseNetwork" style={{ background: '#09181D', textAlign: 'left' }}>
                           <img src={chainLists[selectedChain - 1].icon} alt="" width="20px" /> {chainLists[selectedChain - 1].name}
                         </Dropdown.Toggle>
-                        <Dropdown.Menu className="text-white w-100" style={{ background: '#09181D' }}>
+                        <Dropdown.Menu className="text-white w-100 overflow-hidden" style={{ background: '#09181D' }}>
                           {chainLists.map((item, idx) => (
                             <Dropdown.Item className="text-white" key={idx} onClick={() => selectedChainHandler(item.id)}><img src={item.icon} alt="" width="20px" /> {item.name}</Dropdown.Item>
                           ))}
@@ -49,10 +48,10 @@ function HowitWorks() {
                     <Form.Group className="mb-3" controlId="chooseCoin">
                       <Form.Label>Choose Coin</Form.Label>
                       <Dropdown>
-                        <Dropdown.Toggle variant="success" className="w-100" id="chooseNetwork" style={{ background: '#09181D', textAlign: 'left' }}>
+                        <Dropdown.Toggle variant="success" className="w-100 overflow-hidden" id="chooseNetwork" style={{ background: '#09181D', textAlign: 'left' }}>
                           <img src={coinLists[selectedCoin - 1].icon} alt="" width="20px" /> {coinLists[selectedCoin - 1].name}
                         </Dropdown.Toggle>
-                        <Dropdown.Menu className="text-white w-100" style={{ background: '#09181D' }}>
+                        <Dropdown.Menu className="text-white w-100 overflow-hidden" style={{ background: '#09181D' }}>
                           {coinLists.map((item, idx) => (
                             <Dropdown.Item className="text-white" key={idx} onClick={() => selectedCoinHandler(item.id)}><img src={item.icon} alt="" width="20px" /> {item.name}</Dropdown.Item>
                           ))}

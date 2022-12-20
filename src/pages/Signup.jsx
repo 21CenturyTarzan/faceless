@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import {
   Col, Button, Form, FormControl, InputGroup, FormLabel, Spinner,
 } from 'react-bootstrap';
+import { colors } from '../values/colors';
 
 import StatusAlert from '../components/StatusAlert';
 import { emailPattern, namePattern } from '../common/constants';
@@ -52,28 +53,31 @@ function Signup() {
       </Helmet>
       <main className="container-signup">
         <Form className="row g-2" noValidate>
-          <i className="bi bi-file-lock-fill auth-icon mt-3 text-center"/>
-          <p className="fw-normal text-center">Fill up the form and then click <strong>Sign up</strong> button to sign up.</p>
+          <i className="bi bi-file-lock-fill auth-icon mt-3 text-center" style={{ color: colors.primary }} />
           <Form.Group as={Col} lg="6" controlId="inputFirstName">
-            <FormLabel>First Name</FormLabel>
+            <FormLabel className="text-white">First Name</FormLabel>
             <FormControl type="text"
-                         isInvalid={errors.firstname}
-                         placeholder="First Name"
-                         {...register('firstname', { required: true })}
+              isInvalid={errors.firstname}
+              placeholder="First Name"
+              className="text-white"
+              style={{ background: '#09181D' }}
+              {...register('firstname', { required: true })}
             />
             <Form.Control.Feedback type="invalid">First name is required</Form.Control.Feedback>
           </Form.Group>
           <Form.Group as={Col} lg="6" controlId="inputLastName">
-            <FormLabel>Last Name</FormLabel>
+            <FormLabel className="text-white">Last Name</FormLabel>
             <FormControl type="text"
-                         isInvalid={errors.lastname}
-                         placeholder="Last Name"
-                         {
-                           ...register('lastname', {
-                             required: true,
-                             pattern: namePattern,
-                           })
-                         }
+              isInvalid={errors.lastname}
+              placeholder="Last Name"
+              className="text-white"
+              style={{ background: '#09181D' }}
+              {
+              ...register('lastname', {
+                required: true,
+                pattern: namePattern,
+              })
+              }
             />
             <Form.Control.Feedback type="invalid">
               {errors.lastname?.type === 'required' && 'Last name is required'}
@@ -81,16 +85,18 @@ function Signup() {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group as={Col} lg="12" controlId="inputEmail">
-            <FormLabel>Email</FormLabel>
+            <FormLabel className="text-white">Email</FormLabel>
             <FormControl type="email"
-                         isInvalid={errors.email}
-                         placeholder="Email@domain.com"
-                         {
-                           ...register('email', {
-                             required: true,
-                             pattern: emailPattern,
-                           })
-                         }
+              isInvalid={errors.email}
+              placeholder="Email@domain.com"
+              className="text-white"
+              style={{ background: '#09181D' }}
+              {
+              ...register('email', {
+                required: true,
+                pattern: emailPattern,
+              })
+              }
             />
             <Form.Control.Feedback type="invalid">
               {errors.email?.type === 'required' && 'Email is required'}
@@ -98,14 +104,16 @@ function Signup() {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group as={Col} md="12" controlId="inputUsername">
-            <Form.Label>Username</Form.Label>
+            <Form.Label className="text-white">Username</Form.Label>
             <InputGroup hasValidation>
               <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
               <Form.Control type="text"
-                            isInvalid={errors.username}
-                            placeholder="Username"
-                            aria-describedby="inputGroupPrepend"
-                            {...register('username', { required: true })}
+                isInvalid={errors.username}
+                className="text-white"
+                placeholder="Username"
+                aria-describedby="inputGroupPrepend"
+                style={{ background: '#09181D' }}
+                {...register('username', { required: true })}
               />
               <Form.Control.Feedback type="invalid">
                 {errors.username && 'Username is required'}
@@ -113,16 +121,18 @@ function Signup() {
             </InputGroup>
           </Form.Group>
           <Form.Group as={Col} lg="12" controlId="inputPassword">
-            <FormLabel>Password</FormLabel>
+            <FormLabel className="text-white">Password</FormLabel>
             <FormControl type="password"
-                         isInvalid={errors.password}
-                         placeholder="Password"
-                         {
-                           ...register('password', {
-                             required: true,
-                             minLength: 5,
-                           })
-                         }
+              isInvalid={errors.password}
+              className="text-white"
+              placeholder="Password"
+              style={{ background: '#09181D' }}
+              {
+              ...register('password', {
+                required: true,
+                minLength: 5,
+              })
+              }
             />
             <Form.Control.Feedback type="invalid">
               {errors.password?.type === 'required' && 'Password is required'}
@@ -136,22 +146,24 @@ function Signup() {
               feedbackType="invalid"
               isInvalid={errors.agree}
               {...register('agree', { required: true })}
+              className="text-white"
             />
           </Form.Group>
           <Button className="w-100 btn btn-lg btn-primary"
-                  type="button"
-                  disabled={isLoading}
-                  onClick={handleSubmit(handleSignup)}
+            type="button"
+            disabled={isLoading}
+            onClick={handleSubmit(handleSignup)}
+            style={{ background: colors.primary }}
           >
             <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" hidden={!isLoading} />
-            <span className="px-2">Sign up</span>
+            <span className="px-2 text-black">Sign up</span>
           </Button>
         </Form>
       </main>
       <StatusAlert show={alertOpts.current.isShow}
-                   variant="failure"
-                   message={alertOpts.current.message}
-                   onDismiss={handleDismiss}
+        variant="failure"
+        message={alertOpts.current.message}
+        onDismiss={handleDismiss}
       />
     </>
   );

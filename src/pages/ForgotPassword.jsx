@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import {
   Button, Form, FormControl, FormLabel, Spinner,
 } from 'react-bootstrap';
-
+import { colors } from '../values/colors';
 import useAuth from '../hooks/useAuth';
 
 import StatusAlert from '../components/StatusAlert';
@@ -53,14 +53,15 @@ function ForgotPassword() {
           <div className="col-md-3" />
           <div className="col-md-6">
             <div className="text-center">
-              <i className="bi bi-file-lock-fill auth-icon fw-normal mt-5 text-center" />
+              <i className="bi bi-file-lock-fill auth-icon fw-normal mt-5 text-center" style={{ color: colors.primary }} />
             </div>
-            <p className="mb-3 fw-normal text-center">Enter your email so that we can send a password reset to you.</p>
             <Form.Group controlId="inputEmail">
-              <FormLabel>Email</FormLabel>
+              <FormLabel className="text-white">Email</FormLabel>
               <FormControl type="email"
                            isInvalid={errors.email}
                            placeholder="Email@domain.com"
+                           className="text-white"
+                           style={{ background: '#09181D' }}
                            {
                              ...register('email', {
                                required: true,
@@ -77,9 +78,10 @@ function ForgotPassword() {
                     type="button"
                     disabled={isLoading}
                     onClick={handleSubmit(handleSend)}
+                    style={{ background: colors.primary }}
             >
               <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" hidden={!isLoading} />
-              <span className="px-2">Reset Password</span>
+              <span className="px-2 text-black">Reset Password</span>
             </Button>
           </div>
           <div className="col-md-3" />

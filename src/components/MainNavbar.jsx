@@ -16,16 +16,6 @@ function MainNavbar() {
         <a className="navbar-brand d-flex pt-2 text-white" href="/">
           <img src={logo} alt="" className="navbar-logo " />LOGO
         </a>
-        <button className="navbar-toggler collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarMenu"
-          aria-controls="navbarMenu"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
         <div className="collapse navbar-collapse justify-content-center" id="navbarMenu">
           <ul className="navbar-nav">
             {
@@ -43,6 +33,16 @@ function MainNavbar() {
           onClick={() => navigate('/login')}
         >
           Sign In
+        </button>
+        <button className="navbar-toggler collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarMenu"
+          aria-controls="navbarMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon" />
         </button>
       </div>
     </nav>

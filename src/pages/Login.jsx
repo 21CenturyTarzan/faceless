@@ -8,6 +8,7 @@ import {
 import StatusAlert from '../components/StatusAlert';
 import useAuth from '../hooks/useAuth';
 import useForm from '../hooks/useForm';
+import { colors } from '../values/colors';
 
 import './auth.css';
 
@@ -80,28 +81,30 @@ function Login() {
       </Helmet>
       <main className="container-auth text-center">
         <Form noValidate>
-          <i className="bi bi-file-lock-fill auth-icon my-4"/>
-          <p className="mb-3 fw-normal">
+          <i className="bi bi-file-lock-fill auth-icon my-4"style={{ color: colors.primary }} />
+          {/* <p className="mb-3 fw-normal">
             Click <strong>Log in</strong> button to log into the admin console.
             Use <strong>admin</strong>:<strong>qwerty</strong> to log in.
-          </p>
+          </p> */}
           <Form.Group className="form-floating" controlId="inputUsername">
             <FormControl type="text"
-                         className="form-control form-input-top"
-                         isInvalid={errors?.username}
-                         placeholder="Username"
-                         onChange={handleChange('username')}
+              className="form-control form-input-top text-white"
+              style={{ background: '#09181D' }}
+              isInvalid={errors?.username}
+              placeholder="Username"
+              onChange={handleChange('username')}
             />
-            <FormLabel>Username</FormLabel>
+            <FormLabel className="text-white">Username</FormLabel>
           </Form.Group>
           <Form.Group className="form-floating" controlId="inputPassword">
             <FormControl type="password"
-                         className="form-control form-input-bottom"
-                         isInvalid={errors?.password}
-                         placeholder="Password"
-                         onChange={handleChange('password')}
+              className="form-control form-input-bottom text-white"
+              style={{ background: '#09181D' }}
+              isInvalid={errors?.password}
+              placeholder="Password"
+              onChange={handleChange('password')}
             />
-            <FormLabel>Password</FormLabel>
+            <FormLabel className="text-white">Password</FormLabel>
           </Form.Group>
           <div>
             {Object.keys(errors).map((key) => <div className="text-danger" key={key}>{errors[key]}</div>)}
@@ -109,8 +112,9 @@ function Login() {
           <Form.Group as={Row} className="my-3" controlId="isRemember">
             <Col sm={{ span: 8, offset: 3 }} className="text-md-start">
               <Form.Check label="Remember me"
-                          checked={data.isRemember}
-                          onChange={handleChange('isRemember')} />
+                checked={data.isRemember}
+                className="text-white"
+                onChange={handleChange('isRemember')} />
             </Col>
           </Form.Group>
           <div className="row mb-3">
@@ -118,19 +122,20 @@ function Login() {
             <div className="col-6"><Link to="/signup">New account</Link></div>
           </div>
           <Button className="w-100 btn btn-lg btn-primary"
-                  type="button"
-                  disabled={isLoading}
-                  onClick={handleSubmit}
+            type="button"
+            disabled={isLoading}
+            onClick={handleSubmit}
+            style={{ background: colors.primary }}
           >
             <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" hidden={!isLoading} />
-            <span className="px-2">Log in</span>
+            <span className="px-2 text-black">Log in</span>
           </Button>
         </Form>
       </main>
       <StatusAlert show={alertOpts.current.isShow}
-                   variant="failure"
-                   message={alertOpts.current.message}
-                   onDismiss={handleDismiss}
+        variant="failure"
+        message={alertOpts.current.message}
+        onDismiss={handleDismiss}
       />
     </>
   );
