@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
-
+import { NavLink, useNavigate } from 'react-router-dom';
+import { colors } from '../values/colors';
 import './navbar.css';
 import logo from './logo.svg';
 
@@ -9,7 +9,7 @@ function MainNavbar() {
     { path: '/', title: 'Create transaction' },
     { path: '/', title: 'FAQ' },
   ];
-
+  const navigate = useNavigate();
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
@@ -17,14 +17,14 @@ function MainNavbar() {
           <img src={logo} alt="" className="navbar-logo " />LOGO
         </a>
         <button className="navbar-toggler collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarMenu"
-                aria-controls="navbarMenu"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarMenu"
+          aria-controls="navbarMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"/>
+          <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse justify-content-center" id="navbarMenu">
           <ul className="navbar-nav">
@@ -37,6 +37,13 @@ function MainNavbar() {
             }
           </ul>
         </div>
+        <button type="button"
+          className="btn btn-success btn-lg px-4 text-black"
+          style={{ background: colors.primary }}
+          onClick={() => navigate('/login')}
+        >
+          Sign In
+        </button>
       </div>
     </nav>
   );
