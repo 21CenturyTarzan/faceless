@@ -33,5 +33,6 @@ module.exports = {
   },
   rules: {
     'max-len': ['warn', { code: 120, ignoreTemplateLiterals: true, ignoreStrings: true }], // Match with prettier
+    'linebreak-style':0,
   },
 };

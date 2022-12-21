@@ -9,7 +9,7 @@ import { colors } from '../values/colors';
 
 import StatusAlert from '../components/StatusAlert';
 import { emailPattern, namePattern } from '../common/constants';
-import useAuth from '../hooks/useAuth';
+import axios from '../config/server.config';
 
 import './signup.css';
 
@@ -17,7 +17,6 @@ function Signup() {
   const title = 'Signup';
 
   const [isLoading, setIsLoading] = useState(false);
-  const { addUser } = useAuth();
   const navigate = useNavigate();
   const {
     register, handleSubmit, formState: { errors },
@@ -32,11 +31,20 @@ function Signup() {
   const handleSignup = async (data) => {
     try {
       setIsLoading(true);
-      const user = await addUser(data);
+      axios.post('user/register', data).then((response) => {
+        if (response.data.state === 'success') {
+          setIsLoading(false);
+          navigate('/login');
+        } else {
+          window.alert('already user');
+          setIsLoading(false);
+        }
+      });
+      // const user = await addUser(data);
       // eslint-disable-next-line no-console
-      console.log(`signup successful, user: ${user}`);
-      setIsLoading(false);
-      navigate('/login');
+      // console.log(`signup successful, user: ${user}`);
+      // setIsLoading(false);
+      // navigate('/login');
     } catch (err) {
       // Need to useRef to avoid cyclic reference of the show state in StatusAlert but we now must set alertOps
       // before a set state call so that StatusAlert can render.

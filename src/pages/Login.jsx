@@ -9,7 +9,7 @@ import StatusAlert from '../components/StatusAlert';
 import useAuth from '../hooks/useAuth';
 import useForm from '../hooks/useForm';
 import { colors } from '../values/colors';
-
+import axios from '../config/server.config';
 import './auth.css';
 
 function redirectPath(search) {
@@ -37,11 +37,25 @@ function Login() {
     console.log(data.username, data.password);
     try {
       setIsLoading(true);
-      const token = await login(data.username, data.password);
+      axios.post('user/login', data).then((response) => {
+        if (response.data.state === 'success') {
+          setIsLoading(false);
+          sessionStorage.setItem('username', response.data.username);
+          sessionStorage.setItem('token', response.data.token);
+          sessionStorage.setItem('role', response.data.role);
+        } else if (response.data.state === 'wrongpwd') {
+          window.alert('wrong password');
+          setIsLoading(false);
+        } else if (response.data.state === 'nouser') {
+          window.alert('no user');
+          setIsLoading(false);
+        }
+      });
+      // const token = await login(data.username, data.password);
       // eslint-disable-next-line no-console
-      console.log(`login successful, token: ${token}`);
-      setIsLoading(false);
-      navigate(redirectPath(search));
+      // console.log(`login successful, token: ${token}`);
+      // setIsLoading(false);
+      // navigate(redirectPath(search));
     } catch (err) {
       // Need to useRef to avoid cyclic reference of the show state in StatusAlert but we now must set alertOps
       // before a set state call so that StatusAlert can render.
