@@ -9,6 +9,8 @@ import { colors } from '../values/colors';
 import ethImg from '../img/Ethereum.png';
 import bepImg from '../img/binance.png';
 import usdtImg from '../img/usdt.png';
+import usdcImg from '../img/usdc.png';
+import busdImg from '../img/busd.png';
 import axios from '../config/server.config';
 
 const chainLists = [
@@ -17,17 +19,30 @@ const chainLists = [
 ];
 const coinLists = [
   { id: 1, name: 'USDT Tether USD', icon: usdtImg },
+  { id: 2, name: 'ETH Ether', icon: ethImg },
+  { id: 3, name: 'USDC', icon: usdcImg },
+  { id: 4, name: 'BUSD', icon: busdImg },
 ];
 function HowitWorks() {
+  const currentDataState = {
+    amount: '',
+  };
   const [selectedChain, selectedChainHandler] = useState(1);
   const [selectedCoin, selectedCoinHandler] = useState(1);
+  const [dataState, setValue] = useState(currentDataState);
   const showBtcModal = () => {
-    axios.post('btc/getInvoice').then((response) => {
+    axios.post('btc/getInvoice', { dataState }).then((response) => {
       if (response.data.state === 'success') {
         window.btcpay.showInvoice(response.data.invoiceId);
       }
     });
   };
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    console.log(name, value);
+    setValue({ ...dataState, [name]: value });
+  };
+  console.log(currentDataState.amount, dataState);
   return (
     <>
       <Card style={{ background: '#1A2D33' }}>
@@ -72,7 +87,7 @@ function HowitWorks() {
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="amount">
                       <Form.Label>Amount</Form.Label>
-                      <Form.Control type="text" className="text-white" style={{ background: '#09181D' }} />
+                      <Form.Control type="text" className="text-white" onChange={handleInputChange} value={dataState.amount} name="amount" style={{ background: '#09181D' }} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="timeToTransaction">
                       <Form.Label>Time to Transaction</Form.Label>
