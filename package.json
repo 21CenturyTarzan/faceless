@@ -3,14 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome": "^1.1.8",
-    "@fortawesome/fontawesome-free-solid": "^5.0.13",
-    "@fortawesome/react-fontawesome": "^0.2.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.3.0",
     "bootstrap": "^5.1.3",
-    "font-awesome": "^4.7.0",
     "history": "^5.1.0",
     "jdenticon": "^3.1.1",
     "react": "^18.2.0",
@@ -19,12 +15,10 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.33.1",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
-    "@iconify/icons-fa-brands": "^1.2.4",
-    "@iconify/react": "^4.0.1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-prettier": "^4.0.0",
