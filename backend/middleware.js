@@ -3,7 +3,7 @@ const User = require('./models/user.model');
 
 module.exports = function(req,res,next) {
     console.log('middleware',req.url);
-    if(req.url == "/basic/login"){
+    if(req.url == "/register"){
         next();
     }else{
         var token = req.headers['token']; 
