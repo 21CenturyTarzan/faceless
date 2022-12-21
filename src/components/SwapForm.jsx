@@ -25,10 +25,13 @@ const coinLists = [
 ];
 function HowitWorks() {
   const currentDataState = {
-    amount: '',
+    network: 1,
+    amount: 10,
+    coin: 1,
+    address: '',
   };
-  const [selectedChain, selectedChainHandler] = useState(1);
-  const [selectedCoin, selectedCoinHandler] = useState(1);
+  const [selectedChain, selectedChainF] = useState(1);
+  const [selectedCoin, selectedCoinF] = useState(1);
   const [dataState, setValue] = useState(currentDataState);
   const showBtcModal = () => {
     axios.post('btc/getInvoice', { dataState }).then((response) => {
@@ -39,8 +42,15 @@ function HowitWorks() {
   };
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    console.log(name, value);
     setValue({ ...dataState, [name]: value });
+  };
+  const selectedCoinHandler = (value) => {
+    selectedCoinF(value);
+    setValue({ ...dataState, ['coin']: value });
+  };
+  const selectedChainHandler = (value) => {
+    selectedChainF(value);
+    setValue({ ...dataState, ['network']: value });
   };
   console.log(currentDataState.amount, dataState);
   return (
@@ -83,7 +93,7 @@ function HowitWorks() {
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="destinationAddress">
                       <Form.Label>Destination Address</Form.Label>
-                      <Form.Control type="text" className="text-white" style={{ background: '#09181D' }} placeholder="Enter the wallet address" />
+                      <Form.Control type="text" className="text-white" onChange={handleInputChange} value={dataState.address} name="address" style={{ background: '#09181D' }} placeholder="Enter the wallet address" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="amount">
                       <Form.Label>Amount</Form.Label>
