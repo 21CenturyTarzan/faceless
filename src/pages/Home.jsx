@@ -26,14 +26,12 @@ function Home() {
               <button type="button"
                 className="btn btn-success btn-lg px-4 text-black"
                 style={{ background: colors.primary }}
-                onClick={() => navigate('/signup')}
               >
                 Create Transaction
               </button>
               <button type="button"
                 className="btn btn-success btn-lg px-5 gap-3"
                 style={{ background: '#204D46' }}
-                onClick={() => navigate('/login')}
               >
                 Check Pricing
               </button>

@@ -9,6 +9,7 @@ import { colors } from '../values/colors';
 import ethImg from '../img/Ethereum.png';
 import bepImg from '../img/binance.png';
 import usdtImg from '../img/usdt.png';
+import axios from '../config/server.config';
 
 const chainLists = [
   { id: 1, name: 'ETH Ethereum (ERC 20)', icon: ethImg },
@@ -20,6 +21,13 @@ const coinLists = [
 function HowitWorks() {
   const [selectedChain, selectedChainHandler] = useState(1);
   const [selectedCoin, selectedCoinHandler] = useState(1);
+  const showBtcModal = () => {
+    axios.post('btc/getInvoice').then((response) => {
+      if (response.data.state === 'success') {
+        window.btcpay.showInvoice(response.data.invoiceId);
+      }
+    });
+  };
   return (
     <>
       <Card style={{ background: '#1A2D33' }}>
@@ -78,6 +86,7 @@ function HowitWorks() {
                     <button type="button"
                       className="btn btn-success btn-lg px-4 text-black w-100"
                       style={{ background: colors.primary }}
+                      onClick={() => showBtcModal()}
                     >
                       Next
                     </button>

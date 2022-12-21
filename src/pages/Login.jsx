@@ -43,6 +43,7 @@ function Login() {
           sessionStorage.setItem('username', response.data.username);
           sessionStorage.setItem('token', response.data.token);
           sessionStorage.setItem('role', response.data.role);
+          navigate('/');
         } else if (response.data.state === 'wrongpwd') {
           window.alert('wrong password');
           setIsLoading(false);
